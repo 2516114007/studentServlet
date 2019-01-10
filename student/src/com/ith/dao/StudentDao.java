@@ -11,4 +11,9 @@ public interface StudentDao {
 	 * ��ѯ����ѧ��
 	 */
 	List<Student> findAll() throws SQLException;
+
+	/*
+	 * 添加学生数据
+	 */
+	void insert(Student student) throws SQLException;
 }

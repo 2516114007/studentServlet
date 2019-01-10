@@ -6,12 +6,17 @@ import java.util.List;
 import com.ith.domain.Student;
 
 /*
- * ÕâÊÇÑ§ÉúµÄÒµÎñ´¦Àí¹æ·¶
+ * ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½æ·¶
  */
 
 public interface StudentService {
 	/*
-	 * ²éÑ¯ËùÓĞÑ§Éú
+	 * ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
 	 */
 	List<Student> findAll() throws SQLException;
+
+	/*
+	 * æ·»åŠ 
+	 */
+	void insert(Student student) throws SQLException;
 }

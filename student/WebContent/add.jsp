@@ -18,7 +18,7 @@
 </head>
 <body>
 	<h2>添加学生</h2>
-	<form action="" method="get">
+	<form action="/student/addStudentServlet" method="get">
 		<table border="1">
 			<tr>
 				<th width="100px;">姓名</th>
@@ -27,7 +27,7 @@
 			<tr>
 				<th>性别</th>
 				<td>
-					<input type="radio" name="gender" class="noText" id="male" value="男"><label for="male">男</label>
+					<input type="radio" name="gender" class="noText" id="male" value="男" checked><label for="male">男</label>
 					<input type="radio" name="gender" class="noText" id="female" value="女"><label for="female">女</label>
 				</td>
 			</tr>
@@ -54,7 +54,7 @@
 			</tr>
 			<tr>
 				<th>简介</th>
-				<td><textarea rows="3"></textarea></td>
+				<td><textarea rows="3" name="info"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" width="400px" style="text-align: center;">

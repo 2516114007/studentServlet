@@ -2,15 +2,14 @@ package com.ith.domain;
 
 public class Student {
 	private int id;
-	private String name;//ÐÕÃû
-	private String gender;//ÐÔ±ð
-	private String phone;//µç»°
-	private String birthday;//³öÉúÄêÔÂ
-	private String hobby;//ÐËÈ¤°®ºÃ
-	private String info;//±¸×¢
+	private String name;//ï¿½ï¿½ï¿½ï¿½
+	private String gender;//ï¿½Ô±ï¿½
+	private String phone;//ï¿½ç»°
+	private String birthday;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String hobby;//ï¿½ï¿½È¤ï¿½ï¿½ï¿½ï¿½
+	private String info;//ï¿½ï¿½×¢
 	public Student() {}
-	public Student(int id, String name, String gender, String phone, String birthday, String hobby, String info) {
-		this.id = id;
+	public Student(String name, String gender, String phone, String birthday, String hobby, String info) {
 		this.name = name;
 		this.gender = gender;
 		this.phone = phone;

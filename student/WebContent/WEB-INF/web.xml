@@ -19,4 +19,14 @@
     <servlet-name>StudentListServlet</servlet-name>
     <url-pattern>/studentListServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddStudentServlet</display-name>
+    <servlet-name>AddStudentServlet</servlet-name>
+    <servlet-class>com.ith.servlet.AddStudentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddStudentServlet</servlet-name>
+    <url-pattern>/addStudentServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
