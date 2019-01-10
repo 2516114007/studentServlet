@@ -18,7 +18,7 @@
 </head>
 <body>
 	<h2>添加学生</h2>
-	<form action="/student/addStudentServlet" method="get">
+	<form action="/student/addStudentServlet" method="post">
 		<table border="1">
 			<tr>
 				<th width="100px;">姓名</th>

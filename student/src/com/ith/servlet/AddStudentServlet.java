@@ -1,8 +1,6 @@
 package com.ith.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +12,10 @@ import com.ith.service.impl.StudentServiceImpl;
 
 public class AddStudentServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
 		//获取表单提交的数据
-		String name = req.getParameter("name");
+		String name = req.getParameter("gender");
 		String gender = req.getParameter("gender");
 		String phone = req.getParameter("phone");
 		String birthday = req.getParameter("birthday");
@@ -23,13 +23,15 @@ public class AddStudentServlet extends HttpServlet {
 		String info = req.getParameter("info");
 		
 		//添加到数据库
-		Student student = new Student(name, gender, phone, birthday, hobby, info);
-		StudentService service = new StudentServiceImpl();
+		//Date date;
+		StudentService service;
 		try {
+			//date = new SimpleDateFormat("yyyy-MM-dd").parse(birthday);
+			Student student = new Student(name, gender, phone, birthday, hobby, info);
+			service = new StudentServiceImpl();
 			service.insert(student);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("StudentService层调用出错");
 		}
 		resp.sendRedirect("studentListServlet");
 		//req.getRequestDispatcher("studentListServlet").forward(req, resp);
