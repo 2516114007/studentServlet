@@ -1,6 +1,7 @@
 package com.ith.dao.impl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
@@ -57,6 +58,24 @@ public class StudentDaoImpl implements StudentDao {
 				student.getInfo(),
 				student.getId()
 				);
+	}
+
+	@Override
+	public List<Student> searchStudent(String name, String gender) throws SQLException {
+		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
+		String sql = "select * from stu where 1=1";
+		List<String> list = new ArrayList<String>();
+		
+		//判断有没有姓名、性别，如果有，就拼到sql语句里面
+		if(name != null || name.length() == 0){
+			sql = sql + "and name like ?";
+			list.add("%"+ name +"%");
+		}
+		if(gender != null || name.length() == 0){
+			sql = sql + "and gender=?";
+			list.add(gender);
+		}
+		return runner.query(sql, new BeanListHandler<Student>(Student.class), list.toArray());
 	}
 }
 

@@ -19,6 +19,15 @@ public interface StudentService {
 	 * 根据id查询单个学生对象
 	 */
 	Student findStudentById(int id) throws SQLException;
+	
+	/**
+	 * 根据姓名、性别查询
+	 * @param name
+	 * @param gender
+	 * @return
+	 * @throws SQLException
+	 */
+	List<Student> searchStudent(String name, String gender) throws SQLException;
 
 	/*
 	 * 修改学生数据

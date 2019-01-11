@@ -13,11 +13,25 @@
 		table th{width: 120px; line-height: 30px;}
 		table td{width: 120px; line-height: 30px; text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;padding: 0 10px;}
 		table caption{border: 1px solid black; border-bottom: none; line-height: 30px;}
+		caption input{width: 120px; height: 21px;}
 	</style>
 </head>
 <body>
 	<table border="1">
-		<caption><a href="add.jsp">添加</a></caption>
+		<caption>
+			<form method="post" action="/student/searchStudentServlet">
+				<span>按姓名查询：</span>
+				<input type="text" name="name" placeholder="请输入姓名">
+				<span>按性别查询：</span>
+				<select name="gender">
+					<option value="" style="display: none;">--请选择性别--</option>
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
+				<input type="submit" value="查询">
+			</form>
+			<a href="add.jsp">添加</a>
+		</caption>
 		<thead>
 			<tr>
 				<th>姓名</th>
