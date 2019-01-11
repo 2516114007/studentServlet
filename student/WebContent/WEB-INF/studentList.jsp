@@ -25,6 +25,7 @@
 				<span>按性别查询：</span>
 				<select name="gender">
 					<option value="" style="display: none;">--请选择性别--</option>
+					<option value="">不限</option>
 					<option value="男">男</option>
 					<option value="女">女</option>
 				</select>
@@ -36,7 +37,7 @@
 			<tr>
 				<th>姓名</th>
 				<th>性别</th>
-				<th>电话</th>
+				<th style="width: 150px;">电话</th>
 				<th>生日</th>
 				<th>爱好</th>
 				<th>备注</th>

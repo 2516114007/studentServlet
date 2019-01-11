@@ -67,12 +67,12 @@ public class StudentDaoImpl implements StudentDao {
 		List<String> list = new ArrayList<String>();
 		
 		//判断有没有姓名、性别，如果有，就拼到sql语句里面
-		if(name != null || name.length() == 0){
-			sql = sql + "and name like ?";
+		if(name != null && name.length() != 0){
+			sql = sql + " and name like? ";
 			list.add("%"+ name +"%");
 		}
-		if(gender != null || name.length() == 0){
-			sql = sql + "and gender=?";
+		if(gender != null && gender.length() != 0){
+			sql = sql + " and gender=?";
 			list.add(gender);
 		}
 		return runner.query(sql, new BeanListHandler<Student>(Student.class), list.toArray());

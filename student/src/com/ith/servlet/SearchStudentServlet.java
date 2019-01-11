@@ -16,6 +16,9 @@ import com.ith.service.impl.StudentServiceImpl;
 public class SearchStudentServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("SearchStudentServlet running...");
+		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
+		
 		String name = req.getParameter("name");
 		String gender = req.getParameter("gender");
 		
