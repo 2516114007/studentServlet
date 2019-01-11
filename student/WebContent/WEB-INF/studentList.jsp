@@ -9,9 +9,9 @@
 	<title>学生列表页面</title>
 	<style>
 		*{padding: 0; margin: 0;}
-		table{border-collapse: collapse; margin: 30px 30px;}
+		table{border-collapse: collapse; margin: 30px 30px;table-layout:fixed; width: 840px;}
 		table th{width: 120px; line-height: 30px;}
-		table td{width: 120px; line-height: 30px; text-align: center;}
+		table td{width: 120px; line-height: 30px; text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;padding: 0 10px;}
 		table caption{border: 1px solid black; border-bottom: none; line-height: 30px;}
 	</style>
 </head>
@@ -20,7 +20,6 @@
 		<caption><a href="add.jsp">添加</a></caption>
 		<thead>
 			<tr>
-				<th>学号</th>
 				<th>姓名</th>
 				<th>性别</th>
 				<th>电话</th>
@@ -33,17 +32,24 @@
 		<tbody>
 			<c:forEach items="${studentList}" var="stu">
 				<tr>
-					<td>${stu.id }</td>
-					<td>${stu.name }</td>
-					<td>${stu.gender }</td>
-					<td>${stu.phone }</td>
-					<td>${stu.birthday }</td>
-					<td>${stu.hobby }</td>
-					<td>${stu.info }</td>
-					<td><a href="#">更新</a> <a href="#">删除</a></td>
+					<td title="${stu.name }">${stu.name }</td>
+					<td title="${stu.gender }">${stu.gender }</td>
+					<td title="${stu.phone }">${stu.phone }</td>
+					<td title="${stu.birthday }">${stu.birthday }</td>
+					<td title="${stu.hobby }">${stu.hobby }</td>
+					<td title="${stu.info }">${stu.info }</td>
+					<td><a href="/student/editServlet?id=${stu.id }">修改</a> <a href="#" onclick="deleteData(${stu.id })">删除</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<script>
+		function deleteData(id){
+			var flag = confirm("是否确定删除？");
+			if(flag){
+				window.location.href = "/student/deleteServlet?id="+id;
+			}
+		}
+	</script>
 </body>
 </html>

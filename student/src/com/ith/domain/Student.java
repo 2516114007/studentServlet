@@ -17,6 +17,15 @@ public class Student {
 		this.hobby = hobby;
 		this.info = info;
 	}
+	public Student(int id, String name, String gender, String phone, String birthday, String hobby, String info) {
+		this.id = id;
+		this.name = name;
+		this.gender = gender;
+		this.phone = phone;
+		this.birthday = birthday;
+		this.hobby = hobby;
+		this.info = info;
+	}
 	public int getId() {
 		return id;
 	}

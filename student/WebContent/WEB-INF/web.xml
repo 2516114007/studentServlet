@@ -29,12 +29,34 @@
     <servlet-name>AddStudentServlet</servlet-name>
     <url-pattern>/addStudentServlet</url-pattern>
   </servlet-mapping>
-<!--   <filter>
-  	<filter-name>myFilter</filter-name>
-  	<filter-class>com.ith.filter.MyFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  		<filter-name>myFilter</filter-name>
-  		<url-pattern>/*</url-pattern>
-  </filter-mapping> -->
+  <servlet>
+    <description></description>
+    <display-name>DeleteServlet</display-name>
+    <servlet-name>DeleteServlet</servlet-name>
+    <servlet-class>com.ith.servlet.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteServlet</servlet-name>
+    <url-pattern>/deleteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditServlet</display-name>
+    <servlet-name>EditServlet</servlet-name>
+    <servlet-class>com.ith.servlet.EditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditServlet</servlet-name>
+    <url-pattern>/editServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateStudentServlet</display-name>
+    <servlet-name>UpdateStudentServlet</servlet-name>
+    <servlet-class>com.ith.servlet.UpdateStudentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateStudentServlet</servlet-name>
+    <url-pattern>/updateStudentServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

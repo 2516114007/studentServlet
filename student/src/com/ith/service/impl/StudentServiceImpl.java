@@ -21,4 +21,22 @@ public class StudentServiceImpl implements StudentService {
 		StudentDao dao = new StudentDaoImpl();
 		dao.insert(student);
 	}
+
+	@Override
+	public void delete(int id) throws SQLException {
+		StudentDao dao = new StudentDaoImpl();
+		dao.delete(id);
+	}
+
+	@Override
+	public Student findStudentById(int id) throws SQLException {
+		StudentDao dao = new StudentDaoImpl();
+		return dao.findStudentById(id);
+	}
+
+	@Override
+	public void update(Student student) throws SQLException {
+		StudentDao dao = new StudentDaoImpl();
+		dao.update(student);
+	}
 }
