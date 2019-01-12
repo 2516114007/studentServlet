@@ -3,6 +3,7 @@ package com.ith.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.ith.domain.PageBean;
 import com.ith.domain.Student;
 
 /*
@@ -14,6 +15,14 @@ public interface StudentService {
 	 * ��ѯ����ѧ��
 	 */
 	List<Student> findAll() throws SQLException;
+	
+	/**
+	 * 分页显示学生数据
+	 * @param page
+	 * @return
+	 * @throws SQLException
+	 */
+	 PageBean findStudentByPage(int currentPage) throws SQLException;
 	
 	/*
 	 * 根据id查询单个学生对象

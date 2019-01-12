@@ -69,4 +69,14 @@
     <servlet-name>SearchStudentServlet</servlet-name>
     <url-pattern>/searchStudentServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PageStudentListServlet</display-name>
+    <servlet-name>PageStudentListServlet</servlet-name>
+    <servlet-class>com.ith.servlet.PageStudentListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PageStudentListServlet</servlet-name>
+    <url-pattern>/pageStudentListServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ith.dao.StudentDao;
 import com.ith.dao.impl.StudentDaoImpl;
+import com.ith.domain.PageBean;
 import com.ith.domain.Student;
 import com.ith.service.StudentService;
 
@@ -44,5 +45,18 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> searchStudent(String name, String gender) throws SQLException {
 		StudentDao dao = new StudentDaoImpl();
 		return dao.searchStudent(name, gender);
+	}
+
+	@Override
+	public PageBean findStudentByPage(int currentPage) throws SQLException {
+		StudentDao dao = new StudentDaoImpl();
+		//封装分页的该页数据
+		PageBean<Student> pageBean = new PageBean<Student>();
+		
+		pageBean.setCurrentPage(currentPage);
+		pageBean.setPageSize(StudentDao.pageSize);
+		
+		List<Student> list = dao.findStudentByPage(currentPage);
+		return null;
 	}
 }

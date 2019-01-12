@@ -13,6 +13,9 @@ import com.ith.domain.Student;
 import com.ith.utils.JDBCUtil02;
 
 public class StudentDaoImpl implements StudentDao {
+	/**
+	 * 查询所有学生数据
+	 */
 	@Override
 	public List<Student> findAll() throws SQLException {
 		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
@@ -21,6 +24,9 @@ public class StudentDaoImpl implements StudentDao {
 		return list;
 	}
 
+	/**
+	 * 添加学生数据
+	 */
 	@Override
 	public void insert(Student student) throws SQLException {
 		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
@@ -34,6 +40,9 @@ public class StudentDaoImpl implements StudentDao {
 				);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void delete(int id) throws SQLException {
 		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
@@ -77,6 +86,14 @@ public class StudentDaoImpl implements StudentDao {
 		}
 		return runner.query(sql, new BeanListHandler<Student>(Student.class), list.toArray());
 	}
+
+	@Override
+	public List<Student> findStudentByPage(int currentPage) throws SQLException {
+		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
+		String sql = "select * from stu limit ? , ?";
+		return runner.query(sql, new BeanListHandler<Student>(Student.class), pageSize, (currentPage-1)*pageSize);
+	}
+
 }
 
 

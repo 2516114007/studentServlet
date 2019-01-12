@@ -7,10 +7,20 @@ import com.ith.domain.Student;
 
 public interface StudentDao {
 	
+	int pageSize = 2;//分页每页显示条数
+	
 	/*
 	 * ��ѯ����ѧ��
 	 */
 	List<Student> findAll() throws SQLException;
+	
+	/**
+	 * 分页显示学生数据
+	 * @param page
+	 * @return
+	 * @throws SQLException
+	 */
+	List<Student> findStudentByPage(int currentPage) throws SQLException;
 	
 	/**
 	 * 根据姓名、性别查询
