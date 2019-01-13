@@ -53,10 +53,18 @@ public class StudentServiceImpl implements StudentService {
 		//封装分页的该页数据
 		PageBean<Student> pageBean = new PageBean<Student>();
 		
-		pageBean.setCurrentPage(currentPage);
-		pageBean.setPageSize(StudentDao.pageSize);
+		int pageSize = StudentDao.pageSize;//每页显示条数
+		pageBean.setCurrentPage(currentPage);//设置当前页
+		pageBean.setPageSize(pageSize);//设置每页显示多少条数据
 		
 		List<Student> list = dao.findStudentByPage(currentPage);
-		return null;
+		pageBean.setList(list);//设置这一页的学生数据
+		
+		//总的记录数，总的页数
+		int count = dao.findCount();
+		pageBean.setTotalSize(count);//设置总的记录数
+		pageBean.setTotalPage(count % pageSize == 0 ? count / pageSize : count /pageSize + 1);
+		
+		return pageBean;
 	}
 }

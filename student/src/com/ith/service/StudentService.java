@@ -17,7 +17,7 @@ public interface StudentService {
 	List<Student> findAll() throws SQLException;
 	
 	/**
-	 * 分页显示学生数据
+	 * currentPage页对应的学生数据
 	 * @param page
 	 * @return
 	 * @throws SQLException

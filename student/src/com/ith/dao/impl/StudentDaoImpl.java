@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.ith.dao.StudentDao;
 import com.ith.domain.Student;
@@ -41,7 +42,7 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	/**
-	 * 
+	 * 删除学生数据
 	 */
 	@Override
 	public void delete(int id) throws SQLException {
@@ -49,12 +50,18 @@ public class StudentDaoImpl implements StudentDao {
 		runner.update("delete from stu where id=?", id);
 	}
 
+	/**
+	 * 根据id查找学生数据-修改
+	 */
 	@Override
 	public Student findStudentById(int id) throws SQLException {
 		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
 		return runner.query("select * from stu where id=?", new BeanHandler<Student>(Student.class), id);
 	}
 
+	/**
+	 * 修改学生数据-修改
+	 */
 	@Override
 	public void update(Student student) throws SQLException {
 		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
@@ -69,6 +76,9 @@ public class StudentDaoImpl implements StudentDao {
 				);
 	}
 
+	/**
+	 * 模糊查询
+	 */
 	@Override
 	public List<Student> searchStudent(String name, String gender) throws SQLException {
 		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
@@ -87,11 +97,25 @@ public class StudentDaoImpl implements StudentDao {
 		return runner.query(sql, new BeanListHandler<Student>(Student.class), list.toArray());
 	}
 
+	/**
+	 * 查询currentPage对应的数据
+	 */
 	@Override
 	public List<Student> findStudentByPage(int currentPage) throws SQLException {
 		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
 		String sql = "select * from stu limit ? , ?";
 		return runner.query(sql, new BeanListHandler<Student>(Student.class), pageSize, (currentPage-1)*pageSize);
+	}
+
+	/**
+	 * 查询学生表数据的总数量
+	 */
+	@Override
+	public int findCount() throws SQLException {
+		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
+		String sql = "select count(*) from stu";
+		int count = (int) runner.query(sql, new ScalarHandler());
+		return count;
 	}
 
 }

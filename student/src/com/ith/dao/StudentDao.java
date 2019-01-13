@@ -15,6 +15,13 @@ public interface StudentDao {
 	List<Student> findAll() throws SQLException;
 	
 	/**
+	 * 查血数据总数量
+	 * @return
+	 * @throws SQLException
+	 */
+	int findCount() throws SQLException;
+	
+	/**
 	 * 分页显示学生数据
 	 * @param page
 	 * @return
