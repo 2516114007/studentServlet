@@ -103,8 +103,13 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public List<Student> findStudentByPage(int currentPage) throws SQLException {
 		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
-		String sql = "select * from stu limit ? , ?";
-		return runner.query(sql, new BeanListHandler<Student>(Student.class), pageSize, (currentPage-1)*pageSize);
+		if(currentPage == 1){
+			String sql = "select * from stu limit ?";
+			return runner.query(sql, new BeanListHandler<Student>(Student.class), pageSize);
+		}else{
+			String sql = "select * from stu limit ?,?";
+			return runner.query(sql, new BeanListHandler<Student>(Student.class), pageSize, (currentPage-1)*pageSize);
+		}
 	}
 
 	/**
@@ -114,8 +119,9 @@ public class StudentDaoImpl implements StudentDao {
 	public int findCount() throws SQLException {
 		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
 		String sql = "select count(*) from stu";
-		int count = (int) runner.query(sql, new ScalarHandler());
-		return count;
+//		int count = (int) runner.query(sql, new ScalarHandler());
+		Long count = (Long) runner.query(sql, new ScalarHandler());
+		return count.intValue();
 	}
 
 }

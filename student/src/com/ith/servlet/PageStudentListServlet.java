@@ -13,8 +13,7 @@ import com.ith.service.StudentService;
 import com.ith.service.impl.StudentServiceImpl;
 
 public class PageStudentListServlet extends HttpServlet {
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("PageStudentListServlet running...");
 		int currentPage = Integer.parseInt(req.getParameter("currentPage"));
 		
@@ -27,7 +26,7 @@ public class PageStudentListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		req.setAttribute("pageBean", pagebean);
-		req.getRequestDispatcher("").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/studentListPage.jsp").forward(req, resp);
 		
 	}
 
